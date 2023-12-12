@@ -6,13 +6,15 @@ import "./App.css";
 const App = () => {
 	const [name, setName] = useState(" ");
 
+	const [modal, setModal] = useState(false);
+
 	const changeInput = (input) => {
 		setName(input.target.value);
 	};
 
-	const buttonReset = () => {
-		setName("");
-	};
+	const buttonReset = () => setName("");
+
+	const toggle = () => setModal(!modal);
 
 	return (
 		<div className="background-image">
@@ -21,13 +23,16 @@ const App = () => {
 				<div className="form">
 					<div className="input-label">
 						<Label for="name">Enter your name</Label>
-						<Input value={name} onChange={changeInput} />
+						<Input value={name} onChange={changeInput} type="text" />
 					</div>
 					<div className="Button-placement">
-						<ModalComponent userName={name} />
+						<Button className="Button-styling" onClick={toggle}>
+							Submit Name
+						</Button>
 						<Button className="Button-styling" onClick={buttonReset}>
 							Reset
 						</Button>
+						<ModalComponent name={name} toggle={toggle} modal={modal} />
 					</div>
 				</div>
 			</div>

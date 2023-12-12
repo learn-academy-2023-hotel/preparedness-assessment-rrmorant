@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
-const ModalComponent = ({ userName }) => {
-	const [modal, setModal] = useState(false);
-
-	const toggle = () => setModal(!modal);
-
+const ModalComponent = ({ name, modal, toggle }) => {
 	return (
 		<div>
-			<div className="Button-placement">
-			<Button className="Button-styling" onClick={toggle}>
-				Submit Name
-			</Button>
-      </div>
 			<Modal isOpen={modal} toggle={toggle}>
-				<ModalHeader toggle={toggle}>
-					Well, Hello there {userName}!
-				</ModalHeader>
+				<ModalHeader toggle={toggle}>Well, Hello there {name}!</ModalHeader>
 				<ModalBody>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
 					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -26,14 +15,7 @@ const ModalComponent = ({ userName }) => {
 					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
 					culpa qui officia deserunt mollit anim id est laborum.
 				</ModalBody>
-				<ModalFooter>
-					<Button color="primary" onClick={toggle}>
-						Close
-					</Button>
-					<Button color="secondary" onClick={toggle}>
-						Cancel
-					</Button>
-				</ModalFooter>
+				<ModalFooter></ModalFooter>
 			</Modal>
 		</div>
 	);
